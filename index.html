@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QuickPass Bus Pass Management System</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f2f2f2;
+text-align:center;
+}
+
+.container{
+width:500px;
+margin:auto;
+background:white;
+padding:20px;
+margin-top:50px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input,select{
+width:90%;
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:10px 20px;
+background:green;
+color:white;
+border:none;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>QuickPass Bus Pass Management System</h1>
+
+<h3>Login</h3>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<br><br>
+
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h3>Passenger Details</h3>
+
+<input type="text" id="name" placeholder="Passenger Name">
+
+<select id="route">
+<option>Sangli - Kolhapur</option>
+<option>Sangli - Pune</option>
+</select>
+
+<select id="passType">
+<option>Monthly - Rs.500</option>
+<option>Quarterly - Rs.1400</option>
+<option>Yearly - Rs.5000</option>
+</select>
+
+<h3>Payment</h3>
+
+<select id="payment">
+<option>UPI</option>
+<option>Debit Card</option>
+<option>Credit Card</option>
+</select>
+
+<br><br>
+
+<button onclick="generatePass()">Generate Pass</button>
+
+<hr>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function login(){
+
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user=="admin" && pass=="1234"){
+alert("Login Successful");
+}
+else{
+alert("Invalid Username or Password");
+}
+
+}
+
+function generatePass(){
+
+let name=document.getElementById("name").value;
+let route=document.getElementById("route").value;
+let passType=document.getElementById("passType").value;
+
+document.getElementById("result").innerHTML=
+
+"<h2>DIGITAL BUS PASS</h2>" +
+"<p><b>Pass ID :</b> QP101</p>" +
+"<p><b>Name :</b> " + name + "</p>" +
+"<p><b>Route :</b> " + route + "</p>" +
+"<p><b>Pass Type :</b> " + passType + "</p>" +
+"<p><b>Status :</b> Approved</p>";
+
+}
+
+</script>
+
+</body>
+</html>

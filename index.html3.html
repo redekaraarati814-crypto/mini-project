@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QuickPass Bus Pass Management System</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+text-align:center;
+}
+
+.container{
+width:700px;
+margin:auto;
+background:white;
+padding:20px;
+margin-top:30px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input,select{
+width:90%;
+padding:10px;
+margin:5px;
+}
+
+button{
+padding:10px 20px;
+background:green;
+color:white;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+
+hr{
+margin-top:20px;
+margin-bottom:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>QuickPass Bus Pass Management System</h1>
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<br><br>
+
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h2>Passenger Details</h2>
+
+<input type="text" id="name" placeholder="Passenger Name">
+
+<input type="text" id="mobile" placeholder="Mobile Number">
+
+<input type="email" id="email" placeholder="Email Address">
+
+<br><br>
+
+<select id="route">
+<option>Sangli - Kolhapur</option>
+<option>Sangli - Pune</option>
+</select>
+
+<br><br>
+
+<select id="passType">
+<option>Monthly - Rs.500</option>
+<option>Quarterly - Rs.1400</option>
+<option>Yearly - Rs.5000</option>
+</select>
+
+<br><br>
+
+<h3>Payment Method</h3>
+
+<select id="payment">
+<option>UPI</option>
+<option>Debit Card</option>
+<option>Credit Card</option>
+</select>
+
+<br><br>
+
+<button onclick="generatePass()">Generate Pass</button>
+
+<hr>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function login(){
+
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user=="admin" && pass=="1234"){
+alert("Login Successful");
+}
+else{
+alert("Invalid Username or Password");
+}
+
+}
+
+function generatePass(){
+
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let email=document.getElementById("email").value;
+
+let route=document.getElementById("route").value;
+let passType=document.getElementById("passType").value;
+let payment=document.getElementById("payment").value;
+
+let busNumber="";
+let departureTime="";
+let seats="";
+let amount="";
+let validity="";
+
+if(route=="Sangli - Kolhapur"){
+busNumber="MH12AB1234";
+departureTime="08:00 AM";
+seats="25";
+}
+else{
+busNumber="MH14XY5678";
+departureTime="09:30 AM";
+seats="18";
+}
+
+if(passType=="Monthly - Rs.500"){
+amount="500";
+validity="30 Days";
+}
+else if(passType=="Quarterly - Rs.1400"){
+amount="1400";
+validity="90 Days";
+}
+else{
+amount="5000";
+validity="365 Days";
+}
+
+document.getElementById("result").innerHTML =
+
+"<h2>🚌 DIGITAL BUS PASS</h2>"+
+
+"<hr>"+
+
+"<p><b>Pass ID :</b> QP101</p>"+
+
+"<p><b>Passenger Name :</b> "+name+"</p>"+
+
+"<p><b>Mobile Number :</b> "+mobile+"</p>"+
+
+"<p><b>Email :</b> "+email+"</p>"+
+
+"<p><b>Bus Number :</b> "+busNumber+"</p>"+
+
+"<p><b>Route :</b> "+route+"</p>"+
+
+"<p><b>Departure Time :</b> "+departureTime+"</p>"+
+
+"<p><b>Available Seats :</b> "+seats+"</p>"+
+
+"<p><b>Pass Type :</b> "+passType+"</p>"+
+
+"<p><b>Pass Validity :</b> "+validity+"</p>"+
+
+"<p><b>Amount Paid :</b> Rs."+amount+"</p>"+
+
+"<p><b>Payment Method :</b> "+payment+"</p>"+
+
+"<p><b>Booking Date :</b> 15-06-2026</p>"+
+
+"<p><b>Expiry Date :</b> 15-06-2027</p>"+
+
+"<p><b>Status :</b> Approved ✅</p>"+
+
+"<p><b>Customer Care :</b> 1800-123-456</p>"+
+
+"<p><b>Email Support :</b> support@quickpass.com</p>"+
+
+"<hr>"+
+
+"<h3>Thank You For Using QuickPass</h3>";
+
+}
+
+</script>
+
+</body>
+</html>
